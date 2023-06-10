@@ -260,13 +260,13 @@ button::after {
 }
 
 .button-hover {
-    background-color: #00ACFF;
+    background-color: #00bb33;
     opacity: 0.7;
 }
 
 .positive-disabled-bg {
     color: #ffffff !important;
-    background-color: #00ACFF !important;
+    background-color: #00bb33 !important;
     opacity: 0.5 !important;
 }
 

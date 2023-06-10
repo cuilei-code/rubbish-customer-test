@@ -17,7 +17,7 @@ App({
     },
 
     getUserInfo: function (cb) {
-        /*    var that = this
+            var that = this
             if (this.globalData.userInfo) {
               typeof cb == "function" && cb(this.globalData.userInfo)
             } else {
@@ -29,7 +29,7 @@ App({
                   typeof cb == "function" && cb(that.globalData.userInfo)
                 }
               })
-            }*/
+            }
     },
 
     globalData: {

@@ -5,18 +5,17 @@
 <form bindsubmit="loginSubmit">
     <view class="list card margin-top">
 
-        <view class="header row row-horizontal-around row-no-padding">
-            <view class="col-35 header-tab {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
-                手机验证登录
-            </view>
+      <view class="padding-horizontal">
+        <button formType="button" hover-class="button-hover" class="positive-bg light ">微信用户一键登录</button>
+    </view>
+    <view class="row row-horizontal-center  margin-top">
+      <checkbox style="size:initial;"></checkbox>
+       <navigation>阅读并同意的协议</navigation>
+        
+    </view>
 
-            <text class="border-r"></text>
-            <view class="col-35 header-tab {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">
-                账号密码登录
-            </view>
-        </view>
         <!-- 手机验证登录 -->
-        <view wx:if="{{currentTab==0}}">
+        <!-- <view wx:if="{{currentTab==0}}">
             <view class="item item-input">
                 <text class=" iconfont icon-my placeholder-icon"></text>
                 <input type="number" bindinput="bindChange" id="user" name="user" maxlength="11" placeholder="手机号码"
@@ -31,10 +30,10 @@
                     {{paracont}}
                 </button>
             </view>
-        </view>
+        </view> -->
 
         <!-- 账号密码登录 -->
-        <view wx:if="{{currentTab==1}}">
+        <!-- <view wx:if="{{currentTab==1}}">
             <view class="item item-input">
                 <text class=" iconfont icon-my placeholder-icon"></text>
                 <input type="number" bindinput="bindChange" id="account" maxlength="11" name="account"
@@ -47,12 +46,12 @@
                 <input type="text" bindinput="bindChange" password="true" id="password" maxlength="18" name="password"
                        placeholder="密码"/>
             </view>
-        </view>
+        </view> -->
 
 
     </view>
 
-    <view class="padding-horizontal">
+    <!-- <view class="padding-horizontal">
         <button formType="submit" hover-class="button-hover" class="positive-bg light ">登录</button>
     </view>
     <view class="row row-horizontal-center  margin-top">
@@ -61,6 +60,6 @@
         </navigator>
         <navigator url="findpassword" open-type="navigate" hover-class="none" class="col-30 padding-left">忘记密码
         </navigator>
-    </view>
+    </view> -->
 </form>
 

@@ -7,7 +7,7 @@
         <navigator url="accountinfo" open-type="navigate" class="item item-positive item-avatar item-icon-right user">
             <image src="{{userdata.userfigure||'../../images/head.jpg'}}" alt=""></image>
             <view class="h2 {{(userdata.username==null&&userdata.nickname==null)?'padding-top':''}}">
-                {{userdata.username||'6546645'}}
+                {{userdata.username|| userdata.nickname}}
             </view>
             <view class="p">{{userdata.mobile}}</view>
             <text class="icon-accessory iconfont icon-right "></text>
@@ -24,9 +24,9 @@
         <view class="row row-no-padding light-bg  row-center text-center order-item">
             <navigator url="../wallet/wallet" open-type="switchTab" class="item item-icon-right col ">
                 <view>账号余额</view>
-                <view style="color: #f26604">现金：{{orderSum.account||95.0}}</view>
-                <view style="color: yellow">积分：{{orderSum.account||5.0}}</view>
-                <text class="icon iconfont icon-balance " style="color: #f26604"></text>
+                <view style="color: #00bb33">现金：{{orderSum.account||95.0}}   <span>积分：{{orderSum.account||5.0}}</span></view>
+                <view style="color: #00bb33"></view>
+                <text class="icon iconfont icon-balance " style="color: #ffc900"></text>
             </navigator>
           </view>
         <view class="padding-top"></view>
@@ -35,7 +35,7 @@
             <view class="h2">我登记的信息及货源</view>
             <text class="icon-accessory iconfont icon-right"></text>
         </navigator>
-        <navigator url="../wallet/wallet" open-type="switchTab" class="item item-icon-left item-icon-right">
+        <!-- <navigator url="../wallet/wallet" open-type="switchTab" class="item item-icon-left item-icon-right">
             <text class="icon iconfont icon-moneybag" style="color: #FFD700"></text>
             <view class="h2">我的钱包
                 <view class="item-note">余额 ：
@@ -43,7 +43,7 @@
                 </view>
             </view>
             <text class="icon-accessory iconfont icon-right"></text>
-        </navigator>
+        </navigator> -->
         <navigator url="../news/news" open-type="switchTab" class="item item-icon-left item-icon-right">
             <text class="icon iconfont icon-mark" style="color: #0ab66a"></text>
             <view class="h2">消息</view>

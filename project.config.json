@@ -43,12 +43,11 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.15.0",
-  "appid": "wx539d213a13fa957a",
-  "appsecret": "61bc7b2abb7763dd0b3284b72065a884",
   "projectname": "rubbish_customer",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
-  }
+  },
+  "appid": "wx539d213a13fa957a"
 }

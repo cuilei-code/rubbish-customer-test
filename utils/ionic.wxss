@@ -212,14 +212,14 @@
 }
 
 .item.item-positive {
-    border-color: #008acc;
-    background-color: #2D882D;
+    border-color: #00bb33;
+    background-color: #00bb33;
     color: #fff;
 }
 
 .item.item-calm {
-    border-color: #0a9dc7;
-    background-color: #11c1f3;
+    border-color: #00bb33;
+    background-color: #00bb33;
     color: #fff;
 }
 
@@ -1315,15 +1315,15 @@ a.item:hover, a.item:focus {
 }
 
 .positive, a.positive {
-    color: #00ACFF;
+    color: #00bb33;
 }
 
 .positive-bg {
-    background-color: #00ACFF;
+    background-color: #00bb33;
 }
 
 .positive-border {
-    border-color: #008acc;
+    border-color: #00bb33;
 }
 
 .calm, a.calm {
