@@ -43,8 +43,9 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.15.0",
-  "appid": "wx767712689606a598",
-  "projectname": "miniprogram-1",
+  "appid": "wx539d213a13fa957a",
+  "appsecret": "61bc7b2abb7763dd0b3284b72065a884",
+  "projectname": "rubbish_customer",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
