@@ -4,8 +4,8 @@
 </view>
 <view>
     <view class="list">
-        <navigator url="accountinfo" open-type="navigate" class="item item-positive item-avatar item-icon-right user">
-            <image src="{{userdata.avatarUrl||'../../images/head.jpg'}}" alt=""></image>
+        <navigator class="item item-positive item-avatar item-icon-right user">
+            <image src="{{userdata.avator||'../../images/head.jpg'}}" alt=""></image>
             <view class="h2 {{(wx.getStorageSync('openid') ==null )?'padding-top':''}}">
                 {{userdata.nickName|| userdata.nickName}}
             </view>

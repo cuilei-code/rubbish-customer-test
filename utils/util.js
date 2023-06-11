@@ -315,9 +315,11 @@ function wxLogin() {
  */
 function getUserInfo(callback) {
     var that = this;
-    this.https(app.globalData.api + "/rubbish/WxUser/" + wx.getStorageSync("openid"), "GET", {isHideLoad:true},
+    console.log("ffdfd-openid:", wx.getStorageSync("openid"))
+    this.https(app.globalData.api + "/rubbish/WxUser/wx/" + wx.getStorageSync("openid"), "GET", {isHideLoad:true},
         function (data) {
-            if (data.code == 200) {
+          console.log("/rubbish/WxUser/:" , data)  
+          if (data.code == 200) {
               console.log("/rubbish/WxUser/:" , data)
                 wx.setStorageSync("user", data.data);
                 // var services = data.data.services;
