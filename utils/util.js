@@ -26,12 +26,12 @@ function https(url, type, data, callBack, header) {
             callBack(res.data);
         },
         fail: function (error) {
-            showToast("收收请求失败");
+            showToast("接口请求失败");
         },
         complete: function (res) {
             console.log(res);
             if (res.statusCode === 401) {
-                showToast("收收请求未授权");
+                showToast("接口请求未授权");
             }
             wx.hideLoading();
             wx.stopPullDownRefresh();
@@ -118,8 +118,8 @@ function isLoginModal(isShow) {
     if (!wx.getStorageSync("openid")) {
         if (isShow) {
             wx.showModal({
-                title: '收收提示',
-                content: "登录收收,体验更完善功能",
+                title: '小程序提示',
+                content: "登录小程序,体验更完善功能",
                 showCancel: true,
                 confirmColor: "#00ACFF",
                 confirmText: "登录",

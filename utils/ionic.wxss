@@ -212,14 +212,14 @@
 }
 
 .item.item-positive {
-    border-color: #00bb33;
-    background-color: #00bb33;
+    border-color: #33cd5f;
+    background-color: #33cd5f;
     color: #fff;
 }
 
 .item.item-calm {
-    border-color: #00bb33;
-    background-color: #00bb33;
+    border-color: #33cd5f;
+    background-color: #33cd5f;
     color: #fff;
 }
 
@@ -1315,11 +1315,11 @@ a.item:hover, a.item:focus {
 }
 
 .positive, a.positive {
-    color: #00bb33;
+    color: #33cd5f;
 }
 
 .positive-bg {
-    background-color: #00bb33;
+    background-color: #33cd5f;
 }
 
 .positive-border {
@@ -1327,15 +1327,15 @@ a.item:hover, a.item:focus {
 }
 
 .calm, a.calm {
-    color: #11c1f3;
+    color: #00bb33;
 }
 
 .calm-bg {
-    background-color: #11c1f3;
+    background-color: #00bb33;
 }
 
 .calm-border {
-    border-color: #0a9dc7;
+    border-color: #00bb33;
 }
 
 .assertive, a.assertive {

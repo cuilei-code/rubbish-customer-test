@@ -68,7 +68,7 @@ Page({
             console.log(res.target)
         }
         return {
-            title: '收收分享',
+            title: '爱分享',
             path: '/pages/account/account',
             success: function(res) {
                 // 转发成功

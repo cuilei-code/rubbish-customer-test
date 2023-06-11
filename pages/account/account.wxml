@@ -52,7 +52,7 @@
         <view class="padding-top"></view>
         <navigator url="../util/help?id=22" open-type="navigate" class="item item-icon-left item-icon-right">
             <text class="icon iconfont icon-guanyuwomen" style="color: #ffc900"></text>
-            <view class="h2">关于收收</view>
+            <view class="h2">关于我们</view>
             <text class="icon-accessory iconfont icon-right"></text>
         </navigator>
         <button open-type="share" class="item item-icon-left item-icon-right">
