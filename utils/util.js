@@ -115,7 +115,7 @@ function isLogin() {
  * 是否登录提示
  */
 function isLoginModal(isShow) {
-    if (!wx.getStorageSync("userid")) {
+    if (!wx.getStorageSync("openid")) {
         if (isShow) {
             wx.showModal({
                 title: '收收提示',
@@ -315,21 +315,22 @@ function wxLogin() {
  */
 function getUserInfo(callback) {
     var that = this;
-    this.https(app.globalData.api + "/api/user/get/" + wx.getStorageSync("userid"), "GET", {isHideLoad:true},
+    this.https(app.globalData.api + "/rubbish/WxUser/" + wx.getStorageSync("openid"), "GET", {isHideLoad:true},
         function (data) {
-            if (data.code == 1001) {
+            if (data.code == 200) {
+              console.log("/rubbish/WxUser/:" , data)
                 wx.setStorageSync("user", data.data);
-                var services = data.data.services;
-                //用户会员类型  0 无 1信息提供者  2回收者
-                wx.setStorageSync("usertype", (services == null || services.length == 0) ? 0 : (services.length == 1 && services.indexOf('1') != -1) ? 1 : 2);
-                if (services == null || services.length == 0) {//旧会员 完善信息
-                    that.showModal('收收提示', '尊敬的用户,您好！旧会员需完善资料后才能进行更多的操作！', '完善资料', '暂不完善', function (res) {
-                        if (res.confirm) {
-                            console.log('用户点击确定')
-                        }
-                    })
+                // var services = data.data.services;
+                // //用户会员类型  0 无 1信息提供者  2回收者
+                // wx.setStorageSync("usertype", (services == null || services.length == 0) ? 0 : (services.length == 1 && services.indexOf('1') != -1) ? 1 : 2);
+                // if (services == null || services.length == 0) {//旧会员 完善信息
+                //     that.showModal('收收提示', '尊敬的用户,您好！旧会员需完善资料后才能进行更多的操作！', '完善资料', '暂不完善', function (res) {
+                //         if (res.confirm) {
+                //             console.log('用户点击确定')
+                //         }
+                //     })
 
-                }
+                // }
                 callback.call(this, data)
             }
         }

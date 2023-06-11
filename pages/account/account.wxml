@@ -5,12 +5,12 @@
 <view>
     <view class="list">
         <navigator url="accountinfo" open-type="navigate" class="item item-positive item-avatar item-icon-right user">
-            <image src="{{userdata.userfigure||'../../images/head.jpg'}}" alt=""></image>
-            <view class="h2 {{(userdata.username==null&&userdata.nickname==null)?'padding-top':''}}">
-                {{userdata.username|| userdata.nickname}}
+            <image src="{{userdata.avatarUrl||'../../images/head.jpg'}}" alt=""></image>
+            <view class="h2 {{(wx.getStorageSync('openid') ==null )?'padding-top':''}}">
+                {{userdata.nickName|| userdata.nickName}}
             </view>
             <view class="p">{{userdata.mobile}}</view>
-            <text class="icon-accessory iconfont icon-right "></text>
+            <!-- <text class="icon-accessory iconfont icon-right "></text> -->
         </navigator>
 
         <view class="item item-icon-left   order money">
