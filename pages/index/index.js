@@ -3,7 +3,11 @@
 var app = getApp();
 var util = require('../../utils/util.js');
 Page({
-    data: {},
+  data: {
+    latitude: 23.099994,
+    longitude: 113.324520,
+    markers: []
+  },
 
     /**
      * 生命周期函数--监听页面加载
@@ -31,7 +35,33 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+      var that = this;
+      this.mapCtx = wx.createMapContext('myMap')
+      // this.mapCtx.getCenterLocation({ success: function(res){
+      //   console.log(res.longitude)
+      //   console.log(res.latitude)
+      // }})
+      wx.getLocation({
+        type: 'wgs84',
+        altitude:true,
+        isHighAccuracy:true,
+        highAccuracyExpireTime:3000,
+        success (res) {
+          console.log(res)
+          const latitude = res.latitude
+          const longitude = res.longitude
+          that.setData({
+            latitude:latitude,
+            longitude:longitude,
+            markers:[{
+              id: 1,
+              latitude: latitude,
+              longitude: longitude,
+              name: '测试'
+            }]
+          })
+        }
+       })
     },
 
     /**
@@ -92,6 +122,21 @@ Page({
                 }
             }
         )
+    },
+    getLocation:function(){
+      wx.getLocation({
+        type: 'gcj02', //返回可以用于wx.openLocation的经纬度,
+        altitude:true,
+        success (res) {
+          const latitude = res.latitude
+          const longitude = res.longitude
+          wx.openLocation({
+            latitude,
+            longitude,
+            scale: 18
+          })
+        }
+       })
     }
 })
 
