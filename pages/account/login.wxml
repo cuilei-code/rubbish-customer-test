@@ -2,11 +2,12 @@
 <view class="tool-tip " wx:if="{{popMsg}}">
     <text class="{{popType}}">{{popMsg}}</text>
 </view>
-<form bindsubmit="loginSubmit">
+<form >
     <view class="list card margin-top">
 
       <view class="padding-horizontal">
-        <button formType="button" hover-class="button-hover" class="positive-bg light ">微信用户一键登录</button>
+        <button formType="button" bindtap="login" hover-class="button-hover" class="positive-bg light ">微信用户一键登录</button>
+        <!-- <button type="primary"  bindgetphonenumber="getPhoneNumber" open-type='getPhoneNumber'>获取手机号码</button> -->
     </view>
     <view class="row row-horizontal-center  margin-top">
       <checkbox style="size:initial;"></checkbox>

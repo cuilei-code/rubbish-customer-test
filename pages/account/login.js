@@ -14,9 +14,12 @@ Page({
         currentTab: 0,   // tab切换
         paracont: "获取验证码",//验证码文字
         vcdisabled: true,//验证码按钮状态
-        verifycode: ""//返回的验证码
+        verifycode: "",//返回的验证码
+        userInfo:"",
+        phoneNum:""
     },
 
+    
     /**
      * 生命周期函数--监听页面加载
      */
@@ -34,9 +37,27 @@ Page({
             //微信授权登录
             util.wxLogin();
         })
-
+        let user=wx.getStorageSync('user')
+        console.log('进入小程序的页面获取缓存',user)
+        this.setData({
+          userInfo:user
+        })
     },
-
+/**
+     * 获取用户手机号 
+     */
+    getPhoneNumber: function(e){
+      console.log("4324234", e);
+      if (e.detail.errMsg == "getPhoneNumber:fail user deny") {
+        wx.showToast({
+          title: '拒绝授权，无法获取用户手机号码！',
+        }) 
+        return;
+      }
+      //解密数据获取手机号码
+      console.log(e.detail.code);
+      //this.decryptData(this.data.sessionKey,e.detail.iv,e.detail.encryptedData);
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -104,50 +125,88 @@ Page({
         })
 
     },
+   
+    login(){
+      wx.getUserProfile({
+        desc: '必须授权才能继续使用', // 必填 声明获取用户个人信息后的用途，后续会展示在弹窗中
+        success:(res)=> { 
+          let user=res.userInfo
+            console.log('授权成功', res);
+            this.setData({ 
+                userInfo:res.userInfo
+            })
+           this.loginAgain(user)
+        },
+        fail:(err)=> {
+            console.log('授权失败', err);
+            wx.showToast({
+              title: "授权失败",
+              icon: 'error',
+              duration: 3000
+            })
+        }
+    })
+
+      // wx.getUserProfile({
+      //   desc: '用于完善会员资料',//声明获取用户个人信息后的用途，后续会展示在弹窗中
+      //   success:res =>{
+      //     let user = res.userInfo
+      //     //把用户信息缓存到本地
+      //   //  this.loginSubmit(user)
+      //     wx.setStorageSync('user', user)
+      //     console.log("用户信息",user)
+      //     this.setData({
+      //       userInfo:user
+      //     })
+      //     // loginSucess(user)
+      //   },
+      //   fail: res=>{
+      //     console.log('授权失败',res)
+      //   }
+      // })
+    },
+
+    loginAgain:function(user){
+      wx.login({
+        success: (res) => {
+          let code =res.code
+          console.log("wx.login返回code:",res.code)
+          util.https(app.globalData.api + "/wechat/login", "POST", {
+           code:code,
+            client: 0,
+            avatarUrl:user.avatarUrl,
+            city: user.city,
+            country:user.country,
+            gender: user.gender.toString(),
+            language: user.language,
+            nickName: user.nickName,
+            province:user.province,
+            openid: wx.getStorageSync("openid")
+           
+        },
+        function (data) {
+          console.log("232232:",data)
+            if(data.code==1001){
+              console.log("登录接口返回：",data)
+              //  that.loginSucess(data);
+            }else {
+              console.log("登录接口返回111：",data)
+                //util.toolTip(that,data.message)
+            }
+
+        }
+      )
+        },
+      })
+    },
     /**
      * 登录提交
      */
     loginSubmit: function (e) {
         var that = this;
-        if (that.data.currentTab == 0) {
-            //验证表单
-            that.WxValidate = new WxValidate({
-                    user: {  //验证规则 input name值
-                        required: true,
-                        tel: true
-                    }
-                },
-                {
-                    user: { //提示信息
-                        required: "请填写真实手机号码",
-                    }
-                })
+ 
 
-        } else if (that.data.currentTab == 1) {
-            //验证表单
-            that.WxValidate = new WxValidate({
-                    account: {  //验证规则 input name值
-                        required: true,
-                        tel: true
-                    },
-                    password: {
-                        required: true,
-                        minlength: 6
-                    },
-                },
-                {
-                    account: { //提示信息
-                        required: "请填写真实手机号码",
-                    },
-                    password: { //提示信息
-                        required: "请填写密码",
-                        minlength: "密码至少输入6个字符"
-                    }
-                })
-
-        }
-
-        util.wxValidate(e, that, function () {
+        util.wxValidate(function () {
             /*     console.log(wx.getSystemInfoSync().platform);*/
             //用户手机登录
             if (that.data.currentTab == 0) {
