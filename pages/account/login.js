@@ -131,6 +131,7 @@ Page({
         desc: '必须授权才能继续使用', // 必填 声明获取用户个人信息后的用途，后续会展示在弹窗中
         success:(res)=> { 
           let user=res.userInfo
+            this.loginSubmit(user)
             console.log('授权成功', res);
             this.setData({ 
                 userInfo:res.userInfo
@@ -142,7 +143,7 @@ Page({
             wx.showToast({
               title: "授权失败",
               icon: 'error',
-              duration: 3000
+              duration: 2000
             })
         }
     })
@@ -186,12 +187,22 @@ Page({
         },
         function (data) {
           console.log("232232:",data)
-            if(data.code==1001){
-              console.log("登录接口返回：",data)
-              //  that.loginSucess(data);
+          
+            if(data.code==200){
+              console.log("登录接口返回：",data.data.nickName)
+              wx.setStorageSync('openid', data.data.openid);//登录接口授权openid
+               // that.loginSucess(data);
+                //接口API授权 type 1.是公共授权  2.登录授权
+                util.authorization(2, function () {
+                      //返回上一页
+                      wx.reLaunch({
+                          url: '../account/account'
+                      })
+              },true);
             }else {
               console.log("登录接口返回111：",data)
-                //util.toolTip(that,data.message)
+                util.toolTip(that,data.message)
+               // loginSucess(data);
             }
 
         }
@@ -206,51 +217,7 @@ Page({
         var that = this;
  
 
-        util.wxValidate(function () {
-            /*     console.log(wx.getSystemInfoSync().platform);*/
-            //用户手机登录
-            if (that.data.currentTab == 0) {
-                if (that.data.verifycode != inputContent.verifycode) {
-                    util.toolTip(that,"验证码输入不正确")
-                    return;
-                }
-                util.https(app.globalData.api + "/api/user/login_mobile", "POST", {
-                        mobile: inputContent.user,
-                        code: inputContent.verifycode,
-                        client: 0,
-                        openID: wx.getStorageSync("openid"),
-                        invitecode: ""
-                    },
-                    function (data) {
-                        if(data.code==1001){
-                            that.loginSucess(data);
-                        }else {
-                            util.toolTip(that,data.message)
-                        }
-
-
-                    }
-                )
-            } else if (that.data.currentTab == 1) { //用户名密码登录
-                util.https(app.globalData.api + "/api/user/login", "POST", {
-                        account: inputContent.account,
-                        password: inputContent.password,
-                        client: 0,
-                        openID: wx.getStorageSync("openid"),
-                        invitecode: ""
-                    },
-                    function (data) {
-                        if(data.code==1001){
-                            that.loginSucess(data);
-                        }else {
-                            util.toolTip(that,data.message)
-                        }
-
-                    }
-                )
-            }
-
-        });
+       
 
     },
     /**
