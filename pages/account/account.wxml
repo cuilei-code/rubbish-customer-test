@@ -32,7 +32,7 @@
         <view class="padding-top"></view>
         <navigator url="../order/order" open-type="navigate" class="item item-icon-left item-icon-right">
             <text class="icon iconfont icon-form" style="color: #11c1f3"></text>
-            <view class="h2">我登记的信息及货源</view>
+            <view class="h2">我的积分记录</view>
             <text class="icon-accessory iconfont icon-right"></text>
         </navigator>
         <!-- <navigator url="../wallet/wallet" open-type="switchTab" class="item item-icon-left item-icon-right">

@@ -33,7 +33,8 @@ App({
     },
 
     globalData: {
-        api: "https://selflias.com.cn",//接口服务地址
+        api: "https://selflias.com.cn/stage-api",//接口服务地址，测试
+        //api: "https://selflias.com.cn/prod-api",//接口服务地址,正式
         imgUrl: "http://f.boolv.com",//图片服务地址
         mobApi: "https://s.boolv.com",//手机服务地址
         gaoDeKey: '972cafdc2472d8f779c5274db770ac22',//高德web API服务key

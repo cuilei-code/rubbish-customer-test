@@ -172,7 +172,7 @@ Page({
         success: (res) => {
           let code =res.code
           console.log("wx.login返回code:",res.code)
-          util.https(app.globalData.api + "/wechat/login", "POST", {
+          util.https(app.globalData.api + "/stage-api/wechat/login", "POST", {
            code:code,
             client: 0,
             avatarUrl:user.avatarUrl,
@@ -201,7 +201,7 @@ Page({
               },true);
             }else {
               console.log("登录接口返回111：",data)
-                util.toolTip(that,data.message)
+            //    util.toolTip(that,data.message)
                // loginSucess(data);
             }
 
